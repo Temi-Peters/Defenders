@@ -11,7 +11,7 @@ public class Game1 : Game
     private List<Zombie> zombies;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-
+    
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -38,6 +38,32 @@ public class Game1 : Game
         Texture2D zombie_down = Content.Load<Texture2D>("zombie_down");
         Texture2D zombie_left = Content.Load<Texture2D>("zombie_left");
         Texture2D zombie_right = Content.Load<Texture2D>("zombie_right");
+
+        Dictionary<string, Texture2D> heroSprites = new Dictionary<string, Texture2D>
+        {
+            ["up"] = hero_up,
+            ["down"] = hero_down,
+            ["left"] = hero_left,
+            ["right"] = hero_right,
+        
+        };
+
+        Dictionary<string, Texture2D> zombieSprites = new Dictionary<string, Texture2D>
+        {
+            ["up"] = zombie_up,
+            ["down"] = zombie_down,
+            ["left"] = zombie_left,
+            ["right"] = zombie_right,
+        
+        };
+
+        hero = new Player(100, 225, 30, 30, hero_down, 100, 5, heroSprites);
+        zombies = new List<Zombie>
+        {
+            new Zombie(670, 200, 30, 30, zombie_down, 50, 2, zombieSprites),
+            new Zombie(670, 225, 30, 30, zombie_down, 50, 2, zombieSprites),
+            new Zombie(670, 250, 30, 30, zombie_down, 50, 2, zombieSprites)
+        };
         // TODO: use this.Content to load your game content here
     }
 
@@ -46,6 +72,25 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        KeyboardState keyState = Keyboard.GetState();
+        hero.Update
+        (
+            keyState.IsKeyDown(Keys.A),
+            keyState.IsKeyDown(Keys.D),
+            keyState.IsKeyDown(Keys.W),
+            keyState.IsKeyDown(Keys.S)
+        );
+
+        foreach (Zombie z in zombies)
+        {
+            Vector2 zombiePos = new Vector2(z.X, z.Y);
+            Vector2 heroPos = new Vector2(hero.X, hero.Y);
+            
+            if (Vector2.Distance(zombiePos, heroPos) < 200)
+            {
+                z.Chase(hero.X,hero.Y);
+            }
+        }
         // TODO: Add your update logic here
 
         base.Update(gameTime);
@@ -54,6 +99,14 @@ public class Game1 : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
+
+        _spriteBatch.Begin();
+        _spriteBatch.Draw(hero.Image, new Rectangle(hero.X, hero.Y, hero.Width, hero.Height), Color.White);
+        foreach (Zombie z in zombies)
+        {
+        _spriteBatch.Draw(z.Image, new Rectangle(z.X, z.Y, z.Width, z.Height), Color.White);
+        }
+        _spriteBatch.End();
 
         // TODO: Add your drawing code here
 

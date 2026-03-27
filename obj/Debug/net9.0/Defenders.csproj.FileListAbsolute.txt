@@ -31,3 +31,12 @@
 /Users/temi/Desktop/Defenders/obj/Debug/net9.0/Defenders.pdb
 /Users/temi/Desktop/Defenders/obj/Debug/net9.0/Defenders.genruntimeconfig.cache
 /Users/temi/Desktop/Defenders/obj/Debug/net9.0/ref/Defenders.dll
+/Users/temi/Desktop/Defenders/obj/Debug/net9.0/Defenders.sourcelink.json
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/hero_down.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/hero_left.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/hero_right.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/hero_up.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/zombie_down.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/zombie_left.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/zombie_right.xnb
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/zombie_up.xnb

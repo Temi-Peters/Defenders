@@ -1,1 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/Users/temi/Desktop/Defenders/Content/hero_down.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/hero_down.xnb","TextureProcessor","Texture2DContent",1617,3685,1.520757
+"/Users/temi/Desktop/Defenders/Content/hero_left.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/hero_left.xnb","TextureProcessor","Texture2DContent",1697,3685,0.001149
+"/Users/temi/Desktop/Defenders/Content/hero_right.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/hero_right.xnb","TextureProcessor","Texture2DContent",1630,3685,0.00098
+"/Users/temi/Desktop/Defenders/Content/hero_up.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/hero_up.xnb","TextureProcessor","Texture2DContent",1548,3685,0.00051
+"/Users/temi/Desktop/Defenders/Content/zombie_down.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/zombie_down.xnb","TextureProcessor","Texture2DContent",1625,3685,0.000606
+"/Users/temi/Desktop/Defenders/Content/zombie_left.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/zombie_left.xnb","TextureProcessor","Texture2DContent",1502,3685,0.000607
+"/Users/temi/Desktop/Defenders/Content/zombie_right.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/zombie_right.xnb","TextureProcessor","Texture2DContent",1552,3685,0.000539
+"/Users/temi/Desktop/Defenders/Content/zombie_up.png","/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/zombie_up.xnb","TextureProcessor","Texture2DContent",1403,3685,0.000476

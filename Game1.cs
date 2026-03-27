@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System;
 
 namespace Defenders;
 
@@ -79,7 +80,12 @@ public class Game1 : Game
             keyState.IsKeyDown(Keys.D),
             keyState.IsKeyDown(Keys.W),
             keyState.IsKeyDown(Keys.S)
+
+            
         );
+
+        hero.X = Math.Clamp(hero.X, 0, 770);
+        hero.Y = Math.Clamp(hero.Y, 0, 420);
 
         foreach (Zombie z in zombies)
         {
@@ -92,7 +98,6 @@ public class Game1 : Game
             }
         }
         // TODO: Add your update logic here
-
         base.Update(gameTime);
     }
 

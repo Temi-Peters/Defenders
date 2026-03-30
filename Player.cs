@@ -42,5 +42,11 @@ namespace Defenders;
 
             image = sprites[currentDirection];
         }
+
+        public string CurrentDirection => currentDirection;
+
+        public int HP { get => hp; set => hp = value; }
+        public int Speed => speed;
+
     }
 

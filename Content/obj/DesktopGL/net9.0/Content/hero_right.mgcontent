@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>/Users/temi/Desktop/Defenders/Content/hero_right.png</SourceFile>
-  <SourceTime>2026-03-26T09:52:33.98409+00:00</SourceTime>
+  <SourceTime>2026-03-26T09:52:33.98+00:00</SourceTime>
   <DestFile>/Users/temi/Desktop/Defenders/Content/bin/DesktopGL/Content/hero_right.xnb</DestFile>
-  <DestTime>2026-03-30T10:58:04.9879309+01:00</DestTime>
+  <DestTime>2026-04-16T13:38:50.8209035+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-10-20T15:25:32+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -14,9 +14,10 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private Combat weapon;
     private MouseState previousMouseState;
-    
+    private SpriteFont font;
     public Game1()
     {
+        Console.WriteLine("Game1 created");
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
@@ -67,6 +68,7 @@ public class Game1 : Game
         };
 
         weapon = new Combat(5, 15);
+        font = Content.Load<SpriteFont>("GameFont");
     }
 
     protected override void Update(GameTime gameTime)
@@ -91,7 +93,7 @@ public class Game1 : Game
             Vector2 zombiePos = new Vector2(z.X, z.Y);
             Vector2 heroPos = new Vector2(hero.X, hero.Y);
             
-            if (Vector2.Distance(zombiePos, heroPos) < 200)
+            if (Vector2.Distance(zombiePos, heroPos) < 200 && !hero.Bounds.Intersects(z.Bounds))
             {
                 z.Chase(hero.X, hero.Y);
             }
@@ -104,8 +106,8 @@ public class Game1 : Game
         }
         previousMouseState = mouseState;
 
-        weapon.Update();
         weapon.CheckHit(zombies);
+        weapon.Update();
         zombies.RemoveAll(z => z.HP <= 0);
 
         base.Update(gameTime);
@@ -120,8 +122,12 @@ public class Game1 : Game
         foreach (Zombie z in zombies)
         {
             _spriteBatch.Draw(z.Image, new Rectangle(z.X, z.Y, z.Width, z.Height), Color.White);
+            _spriteBatch.DrawString(font, $"HP: {z.HP}", new Vector2(z.X, z.Y - 15), Color.Red);
         }
+        
         _spriteBatch.End();
+        foreach (Zombie z in zombies)
+        
 
         base.Draw(gameTime);
     }

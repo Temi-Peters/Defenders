@@ -40,3 +40,4 @@
 /Users/temi/Desktop/Defenders/obj/Debug/net9.0/Defenders.pdb
 /Users/temi/Desktop/Defenders/obj/Debug/net9.0/Defenders.genruntimeconfig.cache
 /Users/temi/Desktop/Defenders/obj/Debug/net9.0/ref/Defenders.dll
+/Users/temi/Desktop/Defenders/bin/Debug/net9.0/Content/GameFont.xnb

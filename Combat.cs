@@ -13,7 +13,7 @@ namespace Defenders;
         private bool canAttack;
         private int attackDuration;
         private int attackTimer;   
-        
+        private List<Zombie> alreadyHitZombies = new List<Zombie>();
 
         public int AttackDamage { get => attackDamage; }
         public int AttackDuration { get => attackDuration; }
@@ -52,10 +52,12 @@ namespace Defenders;
             if (isHitboxActive)
             {
                 attackTimer--;
+                Console.WriteLine($"Timer: {attackTimer}");
                 if (attackTimer <= 0)
                 {
                     isHitboxActive = false;
                     canAttack = true;
+                    alreadyHitZombies.Clear();
                 }
             }
         }
@@ -68,10 +70,13 @@ namespace Defenders;
                 {
                     if (Hitbox.Intersects(z.Bounds))
                     {
-                        z.HP -= attackDamage;
+                        if (!alreadyHitZombies.Contains(z))
+                        {
+                            alreadyHitZombies.Add(z);
+                            z.HP -= attackDamage;
+                        }
                     }
                 }
-                isHitboxActive = false;
             }
         }
     }

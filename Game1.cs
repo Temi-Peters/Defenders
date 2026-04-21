@@ -15,6 +15,9 @@ public class Game1 : Game
     private Combat weapon;
     private MouseState previousMouseState;
     private SpriteFont font;
+    public List<Zombie> Zombies => zombies;
+    private Texture2D heroHPDisplay;
+    
     public Game1()
     {
         Console.WriteLine("Game1 created");
@@ -43,6 +46,9 @@ public class Game1 : Game
         Texture2D zombie_left = Content.Load<Texture2D>("zombie_left");
         Texture2D zombie_right = Content.Load<Texture2D>("zombie_right");
 
+        heroHPDisplay = new Texture2D(GraphicsDevice, 1, 1);
+        heroHPDisplay.SetData(new Color[] { Color.White });
+
         Dictionary<string, Texture2D> heroSprites = new Dictionary<string, Texture2D>
         {
             ["up"] = hero_up,
@@ -62,9 +68,9 @@ public class Game1 : Game
         hero = new Player(100, 225, 30, 30, hero_down, 100, 5, heroSprites);
         zombies = new List<Zombie>
         {
-            new Zombie(670, 200, 30, 30, zombie_down, 50, 2, zombieSprites),
-            new Zombie(670, 225, 30, 30, zombie_down, 50, 2, zombieSprites),
-            new Zombie(670, 250, 30, 30, zombie_down, 50, 2, zombieSprites)
+            new Zombie(670, 200, 30, 30, zombie_down, 50, 2, zombieSprites, 5, 30),
+            new Zombie(670, 225, 30, 30, zombie_down, 50, 2, zombieSprites, 5, 30),
+            new Zombie(670, 250, 30, 30, zombie_down, 50, 2, zombieSprites, 5, 30)
         };
 
         weapon = new Combat(5, 15);
@@ -92,10 +98,14 @@ public class Game1 : Game
         {
             Vector2 zombiePos = new Vector2(z.X, z.Y);
             Vector2 heroPos = new Vector2(hero.X, hero.Y);
-            
+
             if (Vector2.Distance(zombiePos, heroPos) < 200 && !hero.Bounds.Intersects(z.Bounds))
             {
                 z.Chase(hero.X, hero.Y);
+            }
+            if (z.Bounds.Intersects(hero.Bounds))
+            {
+                z.Update(hero);
             }
         }
 
@@ -124,13 +134,11 @@ public class Game1 : Game
             _spriteBatch.Draw(z.Image, new Rectangle(z.X, z.Y, z.Width, z.Height), Color.White);
             _spriteBatch.DrawString(font, $"HP: {z.HP}", new Vector2(z.X, z.Y - 15), Color.Red);
         }
-        
+        _spriteBatch.Draw(heroHPDisplay, new Rectangle(10, 10, 100, 10), Color.DarkRed);
+        _spriteBatch.Draw(heroHPDisplay, new Rectangle(10, 10, (int)((float)hero.HP / hero.barHP * 100), 10), Color.Red);
         _spriteBatch.End();
-        foreach (Zombie z in zombies)
-        
-
         base.Draw(gameTime);
     }
 
-    public List<Zombie> Zombies => zombies;
+  
 }

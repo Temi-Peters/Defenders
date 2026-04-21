@@ -7,14 +7,17 @@ namespace Defenders;
     public class Player : Obstacle
     {
         protected int hp;
+        private int maxHP;
         protected int speed;
         protected string currentDirection = "down";
         protected Dictionary<string, Texture2D> sprites;
+        public float barHP { get => maxHP;}
         
 
-        public Player(int newX, int newY, int newWidth, int newHeight,Texture2D newImage ,int newHP, int newSpeed, Dictionary<string, Texture2D> newSprites) : base(newX, newY, newWidth, newHeight, newImage)
+        public Player(int newX, int newY, int newWidth, int newHeight,Texture2D newImage ,float MaxHP, int newSpeed, Dictionary<string, Texture2D> newSprites) : base(newX, newY, newWidth, newHeight, newImage)
         {
-            hp = newHP;
+            hp = (int)MaxHP;
+            maxHP = (int)MaxHP;
             speed = newSpeed;
             sprites = newSprites;
             

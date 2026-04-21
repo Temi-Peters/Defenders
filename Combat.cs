@@ -28,8 +28,6 @@ namespace Defenders;
         }
         public void Attack(int playerX, int playerY, string direction)
         {
-            System.Console.WriteLine($"Combat created | canAttack: {canAttack}");
-            System.Console.WriteLine($"Attack called | canAttack: {canAttack}");
             if (canAttack == true)
             {
                 isHitboxActive = true;  
@@ -52,7 +50,6 @@ namespace Defenders;
             if (isHitboxActive)
             {
                 attackTimer--;
-                Console.WriteLine($"Timer: {attackTimer}");
                 if (attackTimer <= 0)
                 {
                     isHitboxActive = false;

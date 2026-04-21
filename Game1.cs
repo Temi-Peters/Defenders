@@ -17,7 +17,8 @@ public class Game1 : Game
     private SpriteFont font;
     public List<Zombie> Zombies => zombies;
     private Texture2D heroHPDisplay;
-    
+    private Texture2D zombieHPDisplay;
+
     public Game1()
     {
         Console.WriteLine("Game1 created");
@@ -48,7 +49,8 @@ public class Game1 : Game
 
         heroHPDisplay = new Texture2D(GraphicsDevice, 1, 1);
         heroHPDisplay.SetData(new Color[] { Color.White });
-
+        zombieHPDisplay = new Texture2D(GraphicsDevice, 1, 1);
+        zombieHPDisplay.SetData(new Color[] { Color.White });
         Dictionary<string, Texture2D> heroSprites = new Dictionary<string, Texture2D>
         {
             ["up"] = hero_up,
@@ -132,10 +134,11 @@ public class Game1 : Game
         foreach (Zombie z in zombies)
         {
             _spriteBatch.Draw(z.Image, new Rectangle(z.X, z.Y, z.Width, z.Height), Color.White);
-            _spriteBatch.DrawString(font, $"HP: {z.HP}", new Vector2(z.X, z.Y - 15), Color.Red);
+            _spriteBatch.Draw(zombieHPDisplay, new Rectangle(z.X, z.Y-8, 30, 5), Color.DarkGreen);
+            _spriteBatch.Draw(zombieHPDisplay, new Rectangle(z.X, z.Y-8, (int)((float)z.HP / z.barHP * 30), 5), Color.LimeGreen);
         }
-        _spriteBatch.Draw(heroHPDisplay, new Rectangle(10, 10, 100, 10), Color.DarkRed);
-        _spriteBatch.Draw(heroHPDisplay, new Rectangle(10, 10, (int)((float)hero.HP / hero.barHP * 100), 10), Color.Red);
+        _spriteBatch.Draw(heroHPDisplay, new Rectangle(15, 455, 100, 10), Color.DarkRed);
+        _spriteBatch.Draw(heroHPDisplay, new Rectangle(15, 455, (int)((float)hero.HP / hero.barHP * 100), 10), Color.Red);
         _spriteBatch.End();
         base.Draw(gameTime);
     }

@@ -14,7 +14,7 @@ namespace Defenders;
         public float barHP { get => maxHP;}
         
 
-        public Player(int newX, int newY, int newWidth, int newHeight,Texture2D newImage ,float MaxHP, int newSpeed, Dictionary<string, Texture2D> newSprites) : base(newX, newY, newWidth, newHeight, newImage)
+        public Player(int newX, int newY, int newWidth, int newHeight,Texture2D newImage ,int MaxHP, int newSpeed, Dictionary<string, Texture2D> newSprites) : base(newX, newY, newWidth, newHeight, newImage)
         {
             hp = (int)MaxHP;
             maxHP = (int)MaxHP;
